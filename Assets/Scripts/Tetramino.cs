@@ -24,7 +24,9 @@ public class Tetramino : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
             transform.position += new Vector3(1, 0, 0);
-            if (CheckIsValidPosition()){}
+            if (CheckIsValidPosition()){
+                FindObjectOfType<Game>().updateGrid(this);
+            }
             else
             {
                 transform.position += new Vector3(-1, 0, 0);
@@ -32,7 +34,9 @@ public class Tetramino : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             transform.position += new Vector3(-1, 0, 0);
-            if (CheckIsValidPosition()){}
+            if (CheckIsValidPosition()){ 
+                FindObjectOfType<Game>().updateGrid(this); 
+            }
             else
             {
                 transform.position += new Vector3(1, 0, 0);
@@ -56,7 +60,9 @@ public class Tetramino : MonoBehaviour
                 {
                     transform.Rotate(0, 0, 90);
                 }
-                if (CheckIsValidPosition()) { }
+                if (CheckIsValidPosition()) {
+                    FindObjectOfType<Game>().updateGrid(this);
+                }
                 else
                 {
                     if (limitRotation)
@@ -76,7 +82,9 @@ public class Tetramino : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow)|| Time.time-fall >= fall_speed) {
             transform.position += new Vector3(0, -1, 0);
-            if (CheckIsValidPosition()) { }
+            if (CheckIsValidPosition()) {
+                FindObjectOfType<Game>().updateGrid(this);
+            }
             else
             {
                 transform.position += new Vector3(0, 1, 0);

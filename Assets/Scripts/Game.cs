@@ -33,6 +33,13 @@ public class Game : MonoBehaviour
                 }
             }
         }
+        foreach(Transform mino in tetramino.transform){
+            Vector2 pos = round(mino.position);
+            if (pos.y < gridHeight)
+            {
+                grid[(int)pos.x, (int)pos.y] = mino;
+            }
+        }
     }
 
     public bool CheckIsInsideGrid(Vector2 pos)
@@ -77,5 +84,10 @@ public class Game : MonoBehaviour
             default:
                 return "Prefabs/tetramino_T";
         }
+    }
+
+    public Transform getTransformAtGridPosition(Vector2 pos) {
+        if (pos.y > gridHeight)
+            return null;
     }
 }
